@@ -42,13 +42,13 @@ public class Square implements Shape {
     @Override
     public int width() {
         // TODO: A square is SIDE tiles wide.
-        return 0;
+        return side;
     }
 
     @Override
     public int height() {
         // TODO: A square is as tall as it is wide.
-        return 0;
+        return width();
     }
 
     @Override
@@ -57,5 +57,12 @@ public class Square implements Shape {
         //  The bottom edge is y, the top edge is y + side - 1,
         //  the left edge is x, and the right edge is x + side - 1.
         //  Do not change any tile inside the outline.
+        int last = side - 1;
+        for (int i = 0; i < side; i++) {
+            world[x + i][y] = TILE;
+            world[x + i][y + last] = TILE;
+            world[x][y + i] = TILE;
+            world[x + last][y + i] = TILE;
+        }
     }
 }
